@@ -79,7 +79,7 @@ export const de: Copy = {
         title: 'Kostenlos bleibt kostenlos. Änderbar kostet einen Preis.',
         free: {
             name: 'Kostenlos', price: '0 €', per: 'für immer',
-            items: ['Statische QR-Codes', 'Ohne Anmeldung, ohne Kreditkarte', 'Download als PNG und SVG', 'Laufen nie ab'],
+            items: ['Statische QR-Codes', 'Ohne Anmeldung, ohne Kreditkarte', 'Download als PNG und SVG', 'Laufen nie ab', 'Mit kleinem qrnomad.com-Hinweis unter dem Code'],
             limit: 'Link ist nach dem Druck fest',
             cta: 'QR-Code erstellen',
         },
@@ -90,9 +90,9 @@ export const de: Copy = {
                 'Beliebig viele dynamische Codes (Fair Use)',
                 'Ziel jederzeit ändern',
                 'Scan-Statistik: Scans im Zeitverlauf, ungefähre Herkunft, Gerätetyp',
-                'Download als PNG und SVG',
+                'Download als PNG und SVG, ohne qrnomad.com-Hinweis',
                 'Kein Monatsabo, kein Test-Abo, kein automatisches Upgrade',
-                'Wir erinnern dich vor der Verlängerung per E-Mail. Kündigen kannst du jederzeit davor.',
+                'Keine automatische Verlängerung. Wir erinnern dich vor Ablauf per E-Mail, verlängern tust du selbst.',
             ],
             cta: 'Codes änderbar machen',
         },
@@ -101,16 +101,16 @@ export const de: Copy = {
         kicker: 'FAQ',
         title: 'Gerade heraus gefragt.',
         items: [
-            { q: 'Ist der kostenlose QR-Code wirklich kostenlos?', a: ['Ja. Kein Konto, kein Test-Abo, keine Kreditkarte. Du lädst die Datei herunter, und sie gehört dir.'] },
+            { q: 'Ist der kostenlose QR-Code wirklich kostenlos?', a: ['Ja. Kein Konto, kein Test-Abo, keine Kreditkarte. Du lädst die Datei herunter, und sie gehört dir. Unter dem Code steht klein „qrnomad.com“ – das siehst du schon in der Vorschau. Änderbare Codes kommen ohne diesen Hinweis.'] },
             { q: 'Hört mein kostenloser Code irgendwann auf zu funktionieren?', a: ['Nein. Ein statischer Code trägt deinen Link im Muster selbst. Beim Scannen öffnet das Handy direkt deine Seite. Unsere Server sind nicht beteiligt, also können wir ihn nicht abschalten. Er geht nur dann nicht mehr, wenn die verlinkte Seite offline ist.'] },
             { q: 'Was ist der Unterschied zwischen statisch und dynamisch?', a: [
                 'Statisch: Der Link steckt direkt im Code. Kostenlos und unbegrenzt haltbar, aber nach dem Druck fest.',
                 'Dynamisch: Der Code enthält eine feste QRnomad-Adresse, die auf deinen Link weiterleitet. Du änderst das Ziel jederzeit und siehst die Scans. Für diese Weiterleitung zahlst du.',
             ] },
             { q: 'Kann ich einen kostenlosen Code später änderbar machen?', a: ['Nein. Beim statischen Code ist der Link fest eingebaut. Wenn sich dein Link ändern könnte, mach den Code vor dem Druck änderbar.'] },
-            { q: 'Was passiert mit meinen dynamischen Codes, wenn ich kündige?', a: [
+            { q: 'Was passiert mit meinen dynamischen Codes, wenn ich nicht verlängere?', a: [
                 'Sie leiten nicht mehr weiter, sobald dein bezahltes Jahr endet. So funktionieren dynamische Codes überall: Der gedruckte Code zeigt auf unsere Adresse, und die Weiterleitung läuft so lange wie dein Plan.',
-                'Überraschen werden wir dich nicht. Wir schreiben dir vor der Verlängerung. Alle Codes samt Ziel-Links kannst du jederzeit exportieren.',
+                'Überraschen werden wir dich nicht. Es gibt keine automatische Verlängerung: Wir schreiben dir 30 und 7 Tage vor Ablauf, und nach Ablauf zeigen deine Codes noch 30 Tage einen Hinweis mit deinem Link. Alle Codes samt Ziel-Links kannst du jederzeit exportieren.',
                 'Soll ein Code ohne Plan für immer funktionieren, nimm einen kostenlosen statischen Code, der auf eine Seite zeigt, die dir gehört.',
             ] },
             { q: 'Gibt es ein Monatsabo oder eine Testphase?', a: ['Nein. Es gibt einen Plan: 199 € im Jahr, einmal im Voraus bezahlt. Keine Testphase, die still zum Abo wird. Kein automatisches Upgrade. Du siehst den Preis vor dem Kauf, und genau den zahlst du.'] },

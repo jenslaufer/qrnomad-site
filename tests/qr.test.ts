@@ -54,4 +54,16 @@ describe('renderSvg', () => {
         const { size } = await renderSvg('https://abcd.de')
         expect(size).toBe(25)
     })
+
+    it('puts the qrnomad.com caption below the code, outside the quiet zone', async () => {
+        const { svg, size } = await renderSvg('https://example.com')
+        const total = size + 8
+        const outer = svg.match(/^<svg[^>]*viewBox="0 0 ([\d.]+) ([\d.]+)"/)
+        expect(outer).not.toBeNull()
+        expect(Number(outer![1])).toBe(total)
+        expect(Number(outer![2])).toBeGreaterThan(total)
+        const caption = svg.match(/<text[^>]*y="([\d.]+)"[^>]*>qrnomad\.com<\/text>/)
+        expect(caption).not.toBeNull()
+        expect(Number(caption![1])).toBeGreaterThan(total)
+    })
 })

@@ -31,14 +31,40 @@ export function normalizeUrl(input: string): UrlResult {
     }
 }
 
-/** SVG markup plus the module count (without quiet zone). */
-export async function renderSvg(text: string): Promise<{ svg: string; size: number }> {
-    const svg = await QRCode.toString(text, { ...OPTIONS, type: 'svg' })
-    const size = QRCode.create(text, OPTIONS).modules.size
-    return { svg, size }
+const CAPTION = 'qrnomad.com'
+
+/**
+ * Free codes carry a small qrnomad.com caption under the code. It sits below
+ * the quiet zone, so it never touches what the scanner reads.
+ */
+function withCaption(qrSvg: string, total: number): { svg: string; width: number; height: number } {
+    const font = +(total * 0.06).toFixed(2)
+    const height = +(total + font * 1.8).toFixed(2)
+    const inner = qrSvg.replace('<svg ', `<svg x="0" y="0" width="${total}" height="${total}" `)
+    const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${height}">` +
+        `<rect width="${total}" height="${height}" fill="#ffffff"/>${inner}` +
+        `<text x="${total / 2}" y="${+(total + font * 1.1).toFixed(2)}" text-anchor="middle" ` +
+        `font-family="Arial, Helvetica, sans-serif" font-size="${font}" fill="#5A5A55">${CAPTION}</text></svg>`
+    return { svg, width: total, height }
 }
 
-/** 1024 px PNG as data URL. Browser only: the browser build draws on a canvas. */
-export function renderPng(text: string): Promise<string> {
-    return QRCode.toDataURL(text, { ...OPTIONS, type: 'image/png', width: 1024 })
+/** Captioned SVG markup plus the module count (without quiet zone). */
+export async function renderSvg(text: string): Promise<{ svg: string; size: number; width: number; height: number }> {
+    const qrSvg = await QRCode.toString(text, { ...OPTIONS, type: 'svg' })
+    const size = QRCode.create(text, OPTIONS).modules.size
+    return { ...withCaption(qrSvg, size + OPTIONS.margin * 2), size }
+}
+
+/** 1024 px wide PNG as data URL. Browser only: draws the captioned SVG on a canvas. */
+export async function renderPng(text: string): Promise<string> {
+    const { svg, width, height } = await renderSvg(text)
+    const w = 1024
+    const h = Math.round((w * height) / width)
+    const img = new Image()
+    img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg.replace('<svg ', `<svg width="${w}" height="${h}" `))}`
+    await img.decode()
+    const canvas = Object.assign(document.createElement('canvas'), { width: w, height: h })
+    canvas.getContext('2d')!.drawImage(img, 0, 0, w, h)
+    return canvas.toDataURL('image/png')
 }
