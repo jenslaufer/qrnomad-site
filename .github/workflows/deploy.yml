@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+# The repo default token is read-only; the deploy pushes dist/ to branch `site`.
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
