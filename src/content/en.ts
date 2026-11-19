@@ -79,7 +79,7 @@ export const en: Copy = {
         title: 'Free stays free. Editable costs one price.',
         free: {
             name: 'Free', price: '$0', per: 'forever',
-            items: ['Static QR codes', 'No signup, no credit card', 'PNG and SVG download', 'Never expires'],
+            items: ['Static QR codes', 'No signup, no credit card', 'PNG and SVG download', 'Never expires', 'Small qrnomad.com caption under the code'],
             limit: 'Link is fixed once printed',
             cta: 'Create my QR code',
         },
@@ -90,9 +90,9 @@ export const en: Copy = {
                 'Unlimited dynamic codes (fair use)',
                 'Change the destination anytime',
                 'Scan stats: scans over time, rough location, device type',
-                'PNG and SVG download',
+                'PNG and SVG download, no qrnomad.com caption',
                 'No monthly plan, no trial, no automatic upgrades',
-                'We email you before renewal. Cancel anytime before then.',
+                'No automatic renewal. We email you before your year ends; you renew yourself.',
             ],
             cta: 'Make my codes editable',
         },
@@ -101,16 +101,16 @@ export const en: Copy = {
         kicker: 'FAQ',
         title: 'Straight answers.',
         items: [
-            { q: 'Is the free QR code really free?', a: ['Yes. No account, no trial, no credit card. You download the file, and it’s yours.'] },
+            { q: 'Is the free QR code really free?', a: ['Yes. No account, no trial, no credit card. You download the file, and it’s yours. A small “qrnomad.com” caption sits under the code; you see it in the preview. Editable codes come without it.'] },
             { q: 'Will my free code ever stop working?', a: ['No. A static code holds your link inside the pattern itself. When someone scans it, their phone opens your link directly. Our servers are not involved, so we can’t switch it off. It only stops working if the page it links to goes offline.'] },
             { q: 'What’s the difference between static and dynamic?', a: [
                 'A static code holds your link directly. It’s free and works forever, but the link is fixed once printed.',
                 'A dynamic code holds a fixed QRnomad address that forwards to your link. You can change the link anytime and see scan stats. That forwarding is what the plan pays for.',
             ] },
             { q: 'Can I turn a free code into an editable one later?', a: ['No. The link is baked into a static code. If your link might change, make the code editable before you print.'] },
-            { q: 'What happens to my dynamic codes if I cancel?', a: [
+            { q: 'What happens to my dynamic codes if I don’t renew?', a: [
                 'They stop forwarding when your paid year ends. That’s how dynamic codes work everywhere: the printed code points to our address, and the forwarding runs as long as your plan does.',
-                'We won’t surprise you. We email you before renewal. You can export all your codes and their destination links anytime.',
+                'We won’t surprise you. There is no automatic renewal: we email you 30 and 7 days before your year ends, and for 30 days after that your codes show a notice with your link. You can export all your codes and their destination links anytime.',
                 'If a code must work forever without a plan, use a free static code that points to a page you control.',
             ] },
             { q: 'Is there a monthly plan or a free trial?', a: ['No. There’s one plan: $199, paid once a year. No trial that quietly turns into a subscription. No automatic upgrade to a bigger plan. You see the price before you pay, and that’s the price you pay.'] },

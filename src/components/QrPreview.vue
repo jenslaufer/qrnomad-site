@@ -29,7 +29,7 @@ const corners = [
             <div
                 role="img"
                 :aria-label="label"
-                class="aspect-square transition-opacity duration-300 ease-glide [&_svg]:block [&_svg]:size-full"
+                class="transition-opacity duration-300 ease-glide [&_svg]:block [&_svg]:h-auto [&_svg]:w-full"
                 :class="sample ? 'opacity-20' : 'opacity-100'"
                 v-html="svg"
             />
