@@ -25,7 +25,7 @@ const mail = 'jens.laufer@solytics.de'
             <p>Die Website setzt keine Cookies, nutzt keine Analyse-Tools und lädt nichts von fremden Servern. Die Schrift liegt auf derselben Website.</p>
         </LegalSection>
         <LegalSection title="3. QR-Code-Generator">
-            <p>Den kostenlosen QR-Code erzeugt dein Browser auf deinem Gerät. Der Link, den du eingibst, wird nicht an uns übertragen und nicht gespeichert. Auch die Datei, die du herunterlädst, entsteht in deinem Browser.</p>
+            <p>Den kostenlosen QR-Code erzeugt dein Browser auf deinem Gerät. Der Link, den du eingibst, bleibt in deinem Browser. Auch die Datei, die du herunterlädst, entsteht dort. Nur wenn du auf „Code änderbar machen“ klickst, geben wir den Link an app.qrnomad.com weiter, damit er nach dem Kauf dein erster änderbarer Code wird. Kaufst du nicht, speichern wir ihn nicht.</p>
             <p>Scannt jemand einen statischen Code, öffnet das Handy direkt den Link im Code. Unsere Server sind daran nicht beteiligt.</p>
         </LegalSection>
         <LegalSection title="4. Konto und Kauf auf app.qrnomad.com">

@@ -9,7 +9,7 @@ enableAutoUnmount(afterEach)
 // still carries [TODO] notes. Neither may reach a rendered page.
 const FORBIDDEN = ['35 €', '35 €', '$35', '[TODO', 'TODO']
 
-describe.each(['/', '/de/', '/impressum/', '/datenschutz/'])('page %s', path => {
+describe.each(['/', '/de/', '/impressum/', '/datenschutz/', '/agb/'])('page %s', path => {
     it('has no unverified competitor claim and no placeholder', async () => {
         const { wrapper, head } = await mountRoute(path)
         const html = wrapper.html() + JSON.stringify(await renderSSRHead(head))

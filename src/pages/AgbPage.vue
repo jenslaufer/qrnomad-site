@@ -39,7 +39,7 @@ const mail = 'hallo@qrnomad.com'
         </LegalSection>
         <LegalSection title="5. Laufzeit, Verlängerung und Ende">
             <p>(1) Der Vertrag läuft 12 Monate ab der Zahlung und endet dann von selbst. Es gibt keine automatische Verlängerung und keine Kündigungsfrist.</p>
-            <p>(2) Wir erinnern 30 und 7 Tage vor dem Ende per E-Mail. Zahlt der Kunde erneut, verlängert sich der Vertrag um 12 Monate ab dem bisherigen Ende oder, wenn es schon vorbei ist, ab der Zahlung.</p>
+            <p>(2) Wir erinnern 30 und 7 Tage vor dem Ende und am letzten Tag per E-Mail. Zahlt der Kunde erneut, verlängert sich der Vertrag um 12 Monate ab dem bisherigen Ende oder, wenn es schon vorbei ist, ab der Zahlung.</p>
             <p>(3) Nach dem Ende zeigen die Codes 30 Tage lang eine Hinweisseite mit dem Link zum bisherigen Ziel. Danach sind sie nicht mehr aktiv. Konto und Codes bleiben gespeichert; zahlt der Kunde erneut, werden sie wieder aktiv. Auf Wunsch löschen wir das Konto.</p>
             <p>(4) Bereits gezahlte Beträge erstatten wir nicht anteilig, außer im Fall des Widerrufs (Abschnitt 7). Das Recht zur außerordentlichen Kündigung bleibt unberührt.</p>
         </LegalSection>
