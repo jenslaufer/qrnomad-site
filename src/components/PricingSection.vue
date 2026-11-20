@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { APP_URL } from '../config'
+import { signupUrl } from '../config'
 import type { Copy } from '../content'
 import ArrowIcon from './ArrowIcon.vue'
 
-defineProps<{ t: Copy['pricing'] }>()
+defineProps<{ t: Copy['pricing']; locale: string }>()
 </script>
 
 <template>
@@ -38,7 +38,7 @@ defineProps<{ t: Copy['pricing'] }>()
                 <ul class="checks mt-8 mb-10 border-t border-paper [&>li]:border-b [&>li]:border-graphite">
                     <li v-for="item in t.paid.items" :key="item">{{ item }}</li>
                 </ul>
-                <a :href="APP_URL" class="btn btn-signal mt-auto w-full sm:w-auto sm:self-start">{{ t.paid.cta }} <ArrowIcon /></a>
+                <a :href="signupUrl(locale)" class="btn btn-signal mt-auto w-full sm:w-auto sm:self-start">{{ t.paid.cta }} <ArrowIcon /></a>
             </article>
         </div>
     </section>

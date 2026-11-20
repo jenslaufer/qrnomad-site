@@ -8,5 +8,6 @@ export const routes: RouteRecordRaw[] = [
     { path: '/de/', component: () => import('./pages/LandingPage.vue'), props: { locale: 'de' } },
     { path: '/impressum/', component: () => import('./pages/ImpressumPage.vue') },
     { path: '/datenschutz/', component: () => import('./pages/DatenschutzPage.vue') },
+    { path: '/agb/', component: () => import('./pages/AgbPage.vue') },
     { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
