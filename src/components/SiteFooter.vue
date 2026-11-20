@@ -33,6 +33,7 @@ const product = [
                 <ul class="mt-4 space-y-2">
                     <li><RouterLink to="/impressum/" hreflang="de" :class="linkClass">{{ t.imprint }}</RouterLink></li>
                     <li><RouterLink to="/datenschutz/" hreflang="de" :class="linkClass">{{ t.privacy }}</RouterLink></li>
+                    <li><RouterLink to="/agb/" hreflang="de" :class="linkClass">{{ t.terms }}</RouterLink></li>
                 </ul>
             </nav>
             <div class="flex flex-wrap justify-between gap-2 border-t border-graphite pt-4 text-label tracking-normal text-ash sm:col-span-2 lg:col-span-12 lg:mt-6">

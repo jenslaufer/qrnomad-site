@@ -19,10 +19,10 @@ usePageHead({ ...t.seo, path: t.path, lang: t.locale, alternates: true })
 <template>
     <SiteHeader :nav="t.nav" :locale="t.locale" anchor-base="" languages />
     <main id="main" tabindex="-1" class="focus:outline-none">
-        <HeroSection :t="t.hero" :upsell="t.upsell" />
+        <HeroSection :t="t.hero" :upsell="t.upsell" :locale="t.locale" />
         <ProblemSection :t="t.problem" />
         <HowItWorks :t="t.how" />
-        <PricingSection :t="t.pricing" />
+        <PricingSection :t="t.pricing" :locale="t.locale" />
         <FaqSection :t="t.faq" />
         <FinalCta :t="t.final" />
     </main>

@@ -128,7 +128,7 @@ export const de: Copy = {
     footer: {
         tagline: 'Der gedruckte Code bleibt, wo er ist. Sein Ziel zieht mit dir weiter.',
         product: 'Produkt', legal: 'Rechtliches',
-        generator: 'Generator', imprint: 'Impressum', privacy: 'Datenschutz',
+        generator: 'Generator', imprint: 'Impressum', privacy: 'Datenschutz', terms: 'AGB',
         base: 'Statische Codes laufen über keinen Server.',
     },
 }

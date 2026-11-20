@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { APP_URL } from '../config'
+import { signupUrl } from '../config'
 import type { Copy } from '../content'
 import { useQrGenerator } from '../composables/useQrGenerator'
 import { downloadQr } from '../lib/download'
@@ -11,7 +11,7 @@ import UpsellDialog from './UpsellDialog.vue'
 
 // Hero with the free generator. Owns the download flow:
 // download button -> upsell dialog -> free link -> file.
-const props = defineProps<{ t: Copy['hero']; upsell: Copy['upsell'] }>()
+const props = defineProps<{ t: Copy['hero']; upsell: Copy['upsell']; locale: string }>()
 
 const { input, error, svg, size, host, isSample, validate } = useQrGenerator(props.t.placeholder)
 const errorText = computed(() => (error.value ? props.t.errors[error.value] : null))
@@ -85,7 +85,7 @@ async function onFreeDownload() {
         <UpsellDialog
             :open="pending !== null"
             :t="upsell"
-            :app-url="APP_URL"
+            :app-url="signupUrl(locale, pending?.url)"
             @close="pending = null"
             @download="onFreeDownload"
         />

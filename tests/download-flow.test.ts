@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { enableAutoUnmount, flushPromises, type VueWrapper } from '@vue/test-utils'
 import { mountRoute } from './helpers'
 import { downloadQr } from '../src/lib/download'
-import { APP_URL } from '../src/config'
+import { signupUrl } from '../src/config'
 
 vi.mock('../src/lib/download', () => ({ downloadQr: vi.fn() }))
 
@@ -65,9 +65,18 @@ describe('download flow', () => {
         expect(wrapper.find('#qr-url-error').text()).toContain('Link')
     })
 
-    it('sends every paid CTA to APP_URL', async () => {
+    it('sends the paid CTAs to checkout with the language', async () => {
         const { wrapper } = await mountRoute('/de/')
-        expect(byText(wrapper, 'a', 'Code änderbar machen').attributes('href')).toBe(APP_URL)
-        expect(byText(wrapper, 'a', 'Codes änderbar machen').attributes('href')).toBe(APP_URL)
+        expect(byText(wrapper, 'a', 'Codes änderbar machen').attributes('href')).toBe(signupUrl('de'))
+        expect(signupUrl('de')).toBe('https://app.qrnomad.com/signup?lang=de')
+    })
+
+    it('hands the typed link to checkout as the first code', async () => {
+        const { wrapper } = await mountRoute('/de/')
+        await wrapper.find('input#qr-url').setValue('example.com/karte?a=1&b=2')
+        await byText(wrapper, 'button', 'PNG herunterladen').trigger('click')
+        const href = byText(wrapper, 'a', 'Code änderbar machen').attributes('href')!
+        const q = new URL(href).searchParams
+        expect([q.get('lang'), q.get('url')]).toEqual(['de', 'https://example.com/karte?a=1&b=2'])
     })
 })

@@ -128,7 +128,7 @@ export const en: Copy = {
     footer: {
         tagline: 'The printed code stays where it is. Its destination travels with you.',
         product: 'Product', legal: 'Legal',
-        generator: 'Generator', imprint: 'Imprint (German)', privacy: 'Privacy policy (German)',
+        generator: 'Generator', imprint: 'Imprint (German)', privacy: 'Privacy policy (German)', terms: 'Terms (German)',
         base: 'Scans of static codes never touch our servers.',
     },
 }

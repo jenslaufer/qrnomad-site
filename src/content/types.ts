@@ -35,6 +35,6 @@ export interface Copy {
     final: { title: string; body: string; cta: string }
     footer: {
         tagline: string; product: string; legal: string
-        generator: string; imprint: string; privacy: string; base: string
+        generator: string; imprint: string; privacy: string; terms: string; base: string
     }
 }
