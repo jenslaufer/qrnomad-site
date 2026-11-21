@@ -4,6 +4,7 @@ import { signupUrl } from '../config'
 import type { Copy } from '../content'
 import { useQrGenerator } from '../composables/useQrGenerator'
 import { downloadQr } from '../lib/download'
+import { isEmail, subscribe } from '../lib/leads'
 import type { QrFormat } from '../lib/qr'
 import QrForm from './QrForm.vue'
 import QrPreview from './QrPreview.vue'
@@ -18,6 +19,7 @@ const errorText = computed(() => (error.value ? props.t.errors[error.value] : nu
 const form = ref<InstanceType<typeof QrForm>>()
 const status = ref('')
 const pending = ref<{ url: string; format: QrFormat } | null>(null)
+const optinNote = ref('')
 
 function onSubmit() {
     status.value = validate() ? props.t.created(host.value) : ''
@@ -30,10 +32,17 @@ function onDownload(format: QrFormat) {
     else form.value?.focus()
 }
 
-async function onFreeDownload() {
+// The file comes first; the opt-in runs beside it and can never block it.
+async function onFreeDownload(optin: { email: string; hp: string }) {
     const job = pending.value
     pending.value = null
-    if (job) await downloadQr(job.url, job.format)
+    optinNote.value = ''
+    if (!job) return
+    const file = downloadQr(job.url, job.format)
+    const t = props.upsell.optin
+    if (optin.email && !isEmail(optin.email)) optinNote.value = t.invalid
+    else if (optin.email) optinNote.value = (await subscribe(optin.email, props.locale, optin.hp)) ? t.sent : t.failed
+    await file
 }
 </script>
 
@@ -71,6 +80,7 @@ async function onFreeDownload() {
                     @download="onDownload"
                 />
                 <p role="status" class="sr-only">{{ status }}</p>
+                <p role="status" class="font-bold" :class="optinNote && 'mt-4'">{{ optinNote }}</p>
             </div>
 
             <div class="flex max-w-2xl gap-4 border-t border-ink pt-4 lg:col-span-7 lg:mt-8 lg:self-start">

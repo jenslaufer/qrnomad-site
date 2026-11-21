@@ -10,3 +10,9 @@ export function signupUrl(lang: string, url?: string): string {
     if (url) q.set('url', url)
     return `${APP_URL}?${q}`
 }
+
+/** Launch Kit lead capture for the e-mail list (tenant qrnomad, double opt-in on both segments). */
+export const LEAD_CAPTURE_URL = 'https://auth.solytics.de/t/qrnomad/marketing/public/lead-capture'
+
+/** Segment per page language: the confirm mail and the welcome mails follow it. */
+export const leadSegment = (lang: string) => `free-${lang}`

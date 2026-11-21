@@ -46,6 +46,14 @@ export const en: Copy = {
         primary: 'Make it editable',
         free: 'Download free code (link stays fixed)',
         close: 'Close',
+        optin: {
+            label: 'Email (optional)',
+            consent: 'Add your email to get tips on printing QR codes and offers from QRnomad. You confirm by email and can unsubscribe anytime.',
+            privacy: 'Privacy',
+            sent: 'Almost done: please confirm the link in your inbox.',
+            invalid: 'This address looks incomplete. Your download still works.',
+            failed: "Sign-up didn't work. Your download still works.",
+        },
     },
     problem: {
         title: 'Making a QR code takes seconds. Changing it after printing is the hard part.',
