@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watch } from 'vue'
-import { RouterLink } from 'vue-router'
 import type { Copy } from '../content'
 import ArrowIcon from './ArrowIcon.vue'
 
@@ -82,13 +81,14 @@ onBeforeUnmount(() => { if (dialog.value?.hasAttribute('open')) hide(dialog.valu
                     autocomplete="email"
                     inputmode="email"
                     aria-describedby="optin-consent"
+                    @keydown.enter.prevent="onFree"
                     class="h-12 w-full border-2 border-paper bg-paper px-4 text-ink focus-visible:outline-none focus-visible:inset-ring-4 focus-visible:inset-ring-signal"
                 >
                 <!-- Honeypot: humans never see it, bots fill it; Launch Kit drops those. -->
-                <input v-model="hp" name="website_url" type="text" tabindex="-1" autocomplete="new-password" aria-hidden="true" class="sr-only">
+                <input v-model="hp" name="website_url" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only">
                 <p id="optin-consent" class="mt-2 text-label tracking-normal text-ash">
                     {{ t.optin.consent }}
-                    <RouterLink to="/datenschutz/" hreflang="de" class="link text-paper">{{ t.optin.privacy }}</RouterLink>
+                    <a href="/datenschutz/" hreflang="de" target="_blank" rel="noopener" class="link text-paper">{{ t.optin.privacy }}</a>
                 </p>
             </div>
             <div class="mt-8 flex flex-col items-stretch gap-6 sm:flex-row sm:items-center">
