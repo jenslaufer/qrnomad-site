@@ -46,6 +46,13 @@ export const de: Copy = {
         primary: 'Code änderbar machen',
         free: 'Kostenlos herunterladen (Link bleibt fest)',
         close: 'Schließen',
+        optin: {
+            label: 'E-Mail (freiwillig)',
+            consent: 'Trag deine Adresse ein, dann bekommst du Tipps zu QR-Codes im Druck und Angebote von QRnomad. Du bestätigst per Mail und kannst dich jederzeit abmelden.',
+            privacy: 'Datenschutz',
+            sent: 'Fast geschafft: Bitte bestätige den Link in deinem Postfach.',
+            invalid: 'Diese Adresse sieht unvollständig aus. Dein Download läuft trotzdem.',
+        },
     },
     problem: {
         title: 'Einen QR-Code erstellen dauert Sekunden. Ärgerlich wird es nach dem Druck.',

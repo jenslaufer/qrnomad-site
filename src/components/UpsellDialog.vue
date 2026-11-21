@@ -1,12 +1,23 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watch } from 'vue'
+import { RouterLink } from 'vue-router'
 import type { Copy } from '../content'
 import ArrowIcon from './ArrowIcon.vue'
 
 // Modal shown between "download" and the file. Native <dialog>: showModal()
 // makes the page inert (focus stays inside) and Esc closes it.
 const props = defineProps<{ open: boolean; t: Copy['upsell']; appUrl: string }>()
-const emit = defineEmits<{ close: []; download: [] }>()
+const emit = defineEmits<{ close: []; download: [optin: { email: string; hp: string }] }>()
+
+// Optional e-mail opt-in. Never blocks the free download; the parent sends it.
+const email = ref('')
+const hp = ref('')
+
+function onFree() {
+    emit('download', { email: email.value.trim(), hp: hp.value })
+    email.value = ''
+    hp.value = ''
+}
 
 const dialog = ref<HTMLDialogElement>()
 let opener: HTMLElement | null = null
@@ -62,9 +73,27 @@ onBeforeUnmount(() => { if (dialog.value?.hasAttribute('open')) hide(dialog.valu
                 <strong class="font-extrabold text-signal">{{ t.offer }}</strong>
                 {{ t.offerRest }}
             </p>
+            <div class="mt-8 max-w-measure">
+                <label for="optin-email" class="label mb-2 block">{{ t.optin.label }}</label>
+                <input
+                    id="optin-email"
+                    v-model="email"
+                    type="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    aria-describedby="optin-consent"
+                    class="h-12 w-full border-2 border-paper bg-paper px-4 text-ink focus-visible:outline-none focus-visible:inset-ring-4 focus-visible:inset-ring-signal"
+                >
+                <!-- Honeypot: humans never see it, bots fill it; Launch Kit drops those. -->
+                <input v-model="hp" name="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only">
+                <p id="optin-consent" class="mt-2 text-label tracking-normal text-ash">
+                    {{ t.optin.consent }}
+                    <RouterLink to="/datenschutz/" hreflang="de" class="link text-paper">{{ t.optin.privacy }}</RouterLink>
+                </p>
+            </div>
             <div class="mt-8 flex flex-col items-stretch gap-6 sm:flex-row sm:items-center">
                 <a :href="appUrl" class="btn btn-signal">{{ t.primary }} <ArrowIcon /></a>
-                <button type="button" class="link text-paper" @click="emit('download')">{{ t.free }}</button>
+                <button type="button" class="link text-paper" @click="onFree">{{ t.free }}</button>
             </div>
         </div>
     </dialog>
