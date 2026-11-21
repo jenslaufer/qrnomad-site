@@ -106,7 +106,27 @@ describe('e-mail opt-in in the download dialog', () => {
         await byText(wrapper, 'button', png).trigger('click')
         expect(wrapper.find('label[for="optin-email"]').text()).toBe(label)
         expect(wrapper.find('input#optin-email').attributes('required')).toBeUndefined()
-        expect(byText(wrapper, 'a', privacy).attributes('href')).toBe('/datenschutz/')
+        const link = byText(wrapper, 'a', privacy)
+        expect(link.attributes('href')).toBe('/datenschutz/')
+        // A new tab keeps the dialog, the typed address and the pending download.
+        expect(link.attributes('target')).toBe('_blank')
+    })
+
+    it('downloads and signs up on Enter in the e-mail field', async () => {
+        const { wrapper } = await mountRoute('/de/')
+        await wrapper.find('input#qr-url').setValue(LINK)
+        await byText(wrapper, 'button', PNG.de).trigger('click')
+        const field = wrapper.find('input#optin-email')
+        await field.setValue('kunde@example.de')
+        await field.trigger('keydown', { key: 'Enter' })
+        await flushPromises()
+        expect(downloadQr).toHaveBeenCalledExactlyOnceWith(LINK, 'png')
+        expect(sentBody().segment).toBe('free-de')
+    })
+
+    it('keeps autofill out of the honeypot', async () => {
+        const { wrapper } = await mountRoute('/de/')
+        expect(wrapper.find('input[name="website_url"]').attributes('autocomplete')).toBe('off')
     })
 })
 
