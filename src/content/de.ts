@@ -52,6 +52,7 @@ export const de: Copy = {
             privacy: 'Datenschutz',
             sent: 'Fast geschafft: Bitte bestätige den Link in deinem Postfach.',
             invalid: 'Diese Adresse sieht unvollständig aus. Dein Download läuft trotzdem.',
+            failed: 'Das Eintragen hat nicht geklappt. Dein Download läuft trotzdem.',
         },
     },
     problem: {

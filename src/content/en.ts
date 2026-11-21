@@ -52,6 +52,7 @@ export const en: Copy = {
             privacy: 'Privacy',
             sent: 'Almost done: please confirm the link in your inbox.',
             invalid: 'This address looks incomplete. Your download still works.',
+            failed: "Sign-up didn't work. Your download still works.",
         },
     },
     problem: {

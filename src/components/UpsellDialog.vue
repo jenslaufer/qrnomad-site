@@ -85,7 +85,7 @@ onBeforeUnmount(() => { if (dialog.value?.hasAttribute('open')) hide(dialog.valu
                     class="h-12 w-full border-2 border-paper bg-paper px-4 text-ink focus-visible:outline-none focus-visible:inset-ring-4 focus-visible:inset-ring-signal"
                 >
                 <!-- Honeypot: humans never see it, bots fill it; Launch Kit drops those. -->
-                <input v-model="hp" name="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="sr-only">
+                <input v-model="hp" name="website_url" type="text" tabindex="-1" autocomplete="new-password" aria-hidden="true" class="sr-only">
                 <p id="optin-consent" class="mt-2 text-label tracking-normal text-ash">
                     {{ t.optin.consent }}
                     <RouterLink to="/datenschutz/" hreflang="de" class="link text-paper">{{ t.optin.privacy }}</RouterLink>

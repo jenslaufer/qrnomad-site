@@ -20,7 +20,7 @@ export interface Copy {
     }
     upsell: {
         title: string; body: string[]; offer: string; offerRest: string; primary: string; free: string; close: string
-        optin: { label: string; consent: string; privacy: string; sent: string; invalid: string }
+        optin: { label: string; consent: string; privacy: string; sent: string; invalid: string; failed: string }
     }
     problem: { title: string; cases: { key: string; text: string }[]; verdict: [string, string, string] }
     how: {

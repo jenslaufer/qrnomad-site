@@ -36,13 +36,12 @@ function onDownload(format: QrFormat) {
 async function onFreeDownload(optin: { email: string; hp: string }) {
     const job = pending.value
     pending.value = null
+    optinNote.value = ''
     if (!job) return
     const file = downloadQr(job.url, job.format)
-    if (optin.email) {
-        const ok = isEmail(optin.email)
-        optinNote.value = ok ? props.upsell.optin.sent : props.upsell.optin.invalid
-        if (ok) void subscribe(optin.email, props.locale, optin.hp)
-    }
+    const t = props.upsell.optin
+    if (optin.email && !isEmail(optin.email)) optinNote.value = t.invalid
+    else if (optin.email) optinNote.value = (await subscribe(optin.email, props.locale, optin.hp)) ? t.sent : t.failed
     await file
 }
 </script>
@@ -81,7 +80,7 @@ async function onFreeDownload(optin: { email: string; hp: string }) {
                     @download="onDownload"
                 />
                 <p role="status" class="sr-only">{{ status }}</p>
-                <p v-if="optinNote" role="status" class="mt-4 font-bold">{{ optinNote }}</p>
+                <p role="status" class="font-bold" :class="optinNote && 'mt-4'">{{ optinNote }}</p>
             </div>
 
             <div class="flex max-w-2xl gap-4 border-t border-ink pt-4 lg:col-span-7 lg:mt-8 lg:self-start">

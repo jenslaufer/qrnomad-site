@@ -5,17 +5,19 @@ export const isEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)
 
 /**
  * Put `email` on the list for `lang`. Launch Kit mails a confirmation link first.
- * Never throws: the download must not depend on this request. Sends no QR link.
+ * Resolves to whether Launch Kit accepted it; never throws, so the download
+ * never depends on this request. Sends no QR link.
  */
-export async function subscribe(email: string, lang: string, hp: string): Promise<void> {
+export async function subscribe(email: string, lang: string, hp: string): Promise<boolean> {
     try {
-        await fetch(LEAD_CAPTURE_URL, {
+        const res = await fetch(LEAD_CAPTURE_URL, {
             method: 'POST',
-            keepalive: true,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, segment: leadSegment(lang), hp }),
         })
+        return res.ok
     } catch {
         // Offline or blocked: the visitor still has the file.
+        return false
     }
 }

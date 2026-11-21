@@ -40,6 +40,9 @@ An editable code lets you change where it leads, anytime. Same print. New link. 
 
 **$199 a year for unlimited editable codes.** No trial. No monthly plan.
 
+- Optional field: **Email (optional)**
+- Below it: Add your email to get tips on printing QR codes and offers from QRnomad. You confirm by email and can unsubscribe anytime. [Privacy]
+- After the download, by result: Almost done: please confirm the link in your inbox. · This address looks incomplete. Your download still works. · Sign-up didn't work. Your download still works.
 - Button: **Make it editable**
 - Text link, same size and contrast: Download free code (link stays fixed)
 

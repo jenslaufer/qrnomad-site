@@ -32,7 +32,7 @@ async function freeDownload(lang: 'de' | 'en', email: string, hp = '') {
     await flushPromises()
     await byText(wrapper, 'button', PNG[lang]).trigger('click')
     await wrapper.find('input#optin-email').setValue(email)
-    await wrapper.find('input[name="hp"]').setValue(hp)
+    await wrapper.find('input[name="website_url"]').setValue(hp)
     await byText(wrapper, 'button', FREE[lang]).trigger('click')
     await flushPromises()
     return wrapper
@@ -53,7 +53,7 @@ describe('e-mail opt-in in the download dialog', () => {
         expect(fetchMock).toHaveBeenCalledOnce()
         const [url, init] = fetchMock.mock.calls[0]
         expect(url).toBe(LEAD_CAPTURE_URL)
-        expect(init).toMatchObject({ method: 'POST', keepalive: true })
+        expect(init).toMatchObject({ method: 'POST' })
         expect(sentBody()).toEqual({ email: 'kunde@example.de', segment: 'free-de', hp: '' })
         expect(init.body).not.toContain('example.de/karte')
         expect(w.text()).toContain('Fast geschafft: Bitte bestätige den Link in deinem Postfach.')
@@ -69,11 +69,25 @@ describe('e-mail opt-in in the download dialog', () => {
         expect(sentBody().hp).toBe('filled')
     })
 
-    it('still downloads when the request fails', async () => {
-        fetchMock.mockRejectedValue(new TypeError('network down'))
+    it.each([
+        ['the network fails', () => fetchMock.mockRejectedValue(new TypeError('network down'))],
+        ['Launch Kit refuses', () => fetchMock.mockResolvedValue(new Response('{}', { status: 429 }))],
+    ])('still downloads and says the sign-up failed when %s', async (_, arrange) => {
+        arrange()
         const w = await freeDownload('de', 'kunde@example.de')
         expect(downloadQr).toHaveBeenCalledOnce()
         expect(w.find('dialog').attributes('open')).toBeUndefined()
+        expect(w.text()).toContain('Das Eintragen hat nicht geklappt. Dein Download läuft trotzdem.')
+        expect(w.text()).not.toContain('Fast geschafft')
+    })
+
+    it('clears the note on the next download without an address', async () => {
+        const w = await freeDownload('de', 'kunde@example.de')
+        expect(w.text()).toContain('Fast geschafft')
+        await byText(w, 'button', PNG.de).trigger('click')
+        await byText(w, 'button', FREE.de).trigger('click')
+        await flushPromises()
+        expect(w.text()).not.toContain('Fast geschafft')
     })
 
     it('downloads and hints, without a request, for an incomplete address', async () => {
@@ -100,7 +114,7 @@ describe('privacy policy for the e-mail list', () => {
     it('names the list, double opt-in, Launch Kit, SES, revocation and the 7-day deletion', async () => {
         const { wrapper } = await mountRoute('/datenschutz/')
         const text = wrapper.text()
-        for (const s of ['4. E-Mails von QRnomad', 'Double-Opt-in', 'Launch Kit', 'Amazon SES', 'widerrufen', 'nach 7 Tagen', 'nicht den Link deines QR-Codes'])
+        for (const s of ['4. E-Mails von QRnomad', 'Double-Opt-in', 'Launch Kit', 'Amazon SES', 'widerrufen', 'nach 7 Tagen', 'nicht den Link deines QR-Codes', 'bis du dich abmeldest', 'Sperrvermerk', 'kein Zugriffsprotokoll'])
             expect(text).toContain(s)
     })
 })

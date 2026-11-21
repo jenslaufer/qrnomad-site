@@ -42,6 +42,9 @@ Einen änderbaren Code leitest du jederzeit woandershin. Gleicher Druck, neues Z
 
 **199 € im Jahr für beliebig viele änderbare Codes.** Kein Test-Abo, kein Monatsabo.
 
+- Feld, freiwillig: **E-Mail (freiwillig)**
+- Darunter: Trag deine Adresse ein, dann bekommst du Tipps zu QR-Codes im Druck und Angebote von QRnomad. Du bestätigst per Mail und kannst dich jederzeit abmelden. [Datenschutz]
+- Nach dem Download, je nach Ergebnis: Fast geschafft: Bitte bestätige den Link in deinem Postfach. · Diese Adresse sieht unvollständig aus. Dein Download läuft trotzdem. · Das Eintragen hat nicht geklappt. Dein Download läuft trotzdem.
 - Button: **Code änderbar machen**
 - Textlink, gleich groß und gut lesbar: Kostenlos herunterladen (Link bleibt fest)
 
