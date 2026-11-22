@@ -4,3 +4,10 @@
         <component :is="Component" :key="route.path" />
     </RouterView>
 </template>
+
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { readCampaign } from './lib/campaign'
+
+onMounted(() => readCampaign(location.search))
+</script>
