@@ -17,7 +17,7 @@ Market: US. Main keyword: `qr code generator`. One repeated CTA: **Create my QR 
 
 # Create a free QR code that never expires.
 
-**Subline:** No signup. No trial. Paste your link, download PNG or SVG.
+**Subline:** QRnomad turns any link into a QR code for your menus, flyers and packaging. No signup. No trial. Download PNG or SVG.
 
 **Generator**
 - Input label: Your link

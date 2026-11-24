@@ -19,7 +19,7 @@ Markt: Deutschland. Haupt-Keyword: `qr code erstellen`. Ein wiederholter CTA: **
 
 # QR-Code kostenlos erstellen. Ohne Anmeldung, ohne Ablaufdatum.
 
-**Subline:** Link einfügen, Code herunterladen – als PNG oder SVG. Kein Konto, kein Test-Abo, keine Kreditkarte.
+**Subline:** QRnomad macht aus jedem Link einen QR-Code für Speisekarte, Flyer und Verpackung. Kein Konto, kein Test-Abo, keine Kreditkarte. Download als PNG oder SVG.
 
 **Generator**
 - Feldbezeichnung: Dein Link

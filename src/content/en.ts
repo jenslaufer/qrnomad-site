@@ -17,7 +17,7 @@ export const en: Copy = {
     hero: {
         eyebrow: 'Free QR code generator',
         headline: 'Create a free QR code that never expires.',
-        subline: 'No signup. No trial. Paste your link, download PNG or SVG.',
+        subline: 'QRnomad turns any link into a QR code for your menus, flyers and packaging. No signup. No trial. Download PNG or SVG.',
         label: 'Your link',
         placeholder: 'https://your-website.com',
         submit: 'Create my QR code',
