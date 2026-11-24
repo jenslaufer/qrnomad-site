@@ -13,6 +13,8 @@ Landing site for qrnomad.com: free client-side QR generator, upsell to dynamic c
 - Paid CTAs link to `APP_URL` in `src/config.ts`. Change it there only.
 - Page copy: `src/content/en.ts`, `src/content/de.ts`, derived from `copy/landing-*.md`. Tests read the hero headline, title and description straight from the `.md` files, so edit both together.
 - Page list: `src/pages.js`. Keep `public/sitemap.xml` in step; `tests/pages.test.ts` fails otherwise.
+- `llms.txt`, `index.md`, `de/index.md`: built from the page copy by `src/lib/llms.ts` (written in `onFinished`, `vite.config.js`). JSON-LD: `src/lib/jsonLd.ts`. Prices come from the copy; never hard-code them.
+- `public/<32 hex>.txt`: IndexNow key. Public by design; keep the file.
 - Design tokens: `@theme` in `src/style.css`. No raw hex or arbitrary sizes in templates.
 
 ## Rules

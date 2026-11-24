@@ -17,7 +17,7 @@ export const de: Copy = {
     hero: {
         eyebrow: 'Kostenloser QR-Code-Generator',
         headline: 'QR-Code kostenlos erstellen. Ohne Anmeldung, ohne Ablauf­datum.',
-        subline: 'Link einfügen, Code herunterladen – als PNG oder SVG. Kein Konto, kein Test-Abo, keine Kreditkarte.',
+        subline: 'QRnomad macht aus jedem Link einen QR-Code für Speisekarte, Flyer und Verpackung. Kein Konto, kein Test-Abo, keine Kreditkarte. Download als PNG oder SVG.',
         label: 'Dein Link',
         placeholder: 'https://deine-website.de',
         submit: 'QR-Code erstellen',

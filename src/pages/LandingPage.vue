@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { copy, type Locale } from '../content'
+import { useHead } from '@unhead/vue'
 import { usePageHead } from '../composables/usePageHead'
+import { landingJsonLd } from '../lib/jsonLd'
 import FaqSection from '../components/FaqSection.vue'
 import FinalCta from '../components/FinalCta.vue'
 import HeroSection from '../components/HeroSection.vue'
@@ -14,6 +16,7 @@ const props = defineProps<{ locale: Locale }>()
 const t = copy[props.locale]
 
 usePageHead({ ...t.seo, path: t.path, lang: t.locale, alternates: true })
+useHead({ script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(landingJsonLd(t)) }] })
 </script>
 
 <template>
