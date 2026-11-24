@@ -1,0 +1,10 @@
+# QRnomad
+
+> Free QR code generator: no signup, no expiry. Static codes are free forever; editable (dynamic) codes cost one yearly price.
+
+Static codes hold the link inside the pattern, so scans never touch QRnomad servers. The site exists in English and German.
+
+## Pages
+
+- [QRnomad (English)](https://qrnomad.com/index.md): Create a free QR code in seconds. No signup, no trial, no expiry date. Download PNG or SVG. Need to change the link after printing? Go dynamic.
+- [QRnomad (Deutsch)](https://qrnomad.com/de/index.md): Erstelle deinen QR-Code kostenlos: ohne Anmeldung, ohne Ablaufdatum, als PNG oder SVG. Link nach dem Druck ändern? Dynamisch für 199 €/Jahr.
